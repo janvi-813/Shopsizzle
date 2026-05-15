@@ -23,7 +23,7 @@
     "cors": "^2.8.5",
     "cron": "^4.4.0",
     "dotenv": "^16.4.7",
-    "drizzle-orm": "^0.39.3",
+    "drizzle-orm": "^0.45.2",
     "express": "^5.2.1",
     "pg": "^8.13.1",
     "standardwebhooks": "^1.0.0",
@@ -35,8 +35,8 @@
     "@types/express": "^5.0.6",
     "@types/node": "^22.10.10",
     "@types/pg": "^8.11.10",
-    "drizzle-kit": "^0.30.4",
+    "drizzle-kit": "^0.18.1",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.9.3"
   }
 }
