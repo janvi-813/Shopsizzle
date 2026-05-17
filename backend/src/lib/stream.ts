@@ -14,6 +14,10 @@ export function streamChatDisplayName(
 }
 
 export function getStreamChatServer(env: Env) {
+  if (!env.STREAM_API_KEY || !env.STREAM_API_SECRET) {
+    throw new Error("STREAM_API_KEY and STREAM_API_SECRET must be set to use Stream Chat");
+  }
+
   return StreamChat.getInstance(env.STREAM_API_KEY, env.STREAM_API_SECRET);
 }
 
