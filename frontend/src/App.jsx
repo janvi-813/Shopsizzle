@@ -3,14 +3,14 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react'
+import { SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <> 
-    <header>
+    {/* <header>
         <Show when="signed-out">
           <SignInButton />
           <SignUpButton />
@@ -18,7 +18,7 @@ function App() {
         <Show when="signed-in">
           <UserButton />
         </Show>
-      </header>
+      </header> */}
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
