@@ -12,7 +12,7 @@ import { clerkMiddleware } from "@clerk/express";
  import { getEnv } from "./lib/env";
 import keepAliveCron from "./lib/cron";
 
-import productRouter from "./routes/productRouter";
+import productRouter from "./routes/productRouter"; 
 import meRouter from "./routes/meRouter";
 import streamRouter from "./routes/streamRouter";
  import chekoutRouter from "./routes/chekoutRouter";
@@ -91,5 +91,5 @@ app.use(
   }
 });
 
- 
+  
 
