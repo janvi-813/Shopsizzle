@@ -19,12 +19,12 @@ const envSchema = z.object({
 
 POLAR_CHECKOUT_PRODUCT_ID: z.string().uuid(),
 //POLAR_CHECKOUT_PRODUCT_ID: z.string(),
-  STREAM_API_KEY: z.string().min(1),
-  STREAM_API_SECRET: z.string().min(1),
+  STREAM_API_KEY: z.string().optional(),
+  STREAM_API_SECRET: z.string().optional(),
 
-  IMAGEKIT_PUBLIC_KEY: z.string().min(1),
-  IMAGEKIT_PRIVATE_KEY: z.string().min(1),
-  IMAGEKIT_URL_ENDPOINT: z.string().url(),
+  IMAGEKIT_PUBLIC_KEY: z.string().optional(),
+  IMAGEKIT_PRIVATE_KEY: z.string().optional(),
+  IMAGEKIT_URL_ENDPOINT: z.string().url().optional(),
 
   SENTRY_DSN: z.string().url().optional(),
 });
