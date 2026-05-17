@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAuth } from "@clerk/react";
+import { useAuth } from "@clerk/clerk-react";
 import * as Sentry from "@sentry/react";
 
 /** keeps Sentry user context in sync with Clerk (errors and replays show which user). */

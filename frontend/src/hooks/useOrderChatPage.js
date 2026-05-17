@@ -3,7 +3,7 @@ import { useOutletContext, useParams } from "react-router";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { StreamChat } from "stream-chat";
 import { apiFetch } from "../lib/api.js";
-import { useAuth } from "@clerk/react";
+import { useAuth } from "@clerk/clerk-react";
 
 export function useOrderChatPage() {
   const { id } = useParams();

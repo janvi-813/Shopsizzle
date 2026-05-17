@@ -1,4 +1,4 @@
-import { Show, SignInButton, useAuth, UserButton } from "@clerk/react";
+import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from "@clerk/clerk-react";
 import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "../lib/api";
 import { Link } from "react-router";
@@ -47,7 +47,7 @@ const Navbar = () => {
             <span className="hidden sm:inline">Shop</span>
           </Link>
 
-          <Show when={"signed-in"}>
+          <SignedIn>
             <Link to="/orders" className="btn btn-ghost gap-2 font-medium">
               <PackageIcon className="size-6 opacity-90" aria-hidden />
               <span className="hidden sm:inline">Orders</span>
@@ -59,7 +59,7 @@ const Navbar = () => {
                 <span className="hidden sm:inline">Admin</span>
               </Link>
             ) : null}
-          </Show>
+          </SignedIn>
 
           <Link
             to="/cart"
@@ -75,16 +75,16 @@ const Navbar = () => {
             <span className="hidden sm:inline">Cart</span>
           </Link>
 
-          <Show when={"signed-out"}>
+          <SignedOut>
             <SignInButton mode="modal">
               <button type="button" className="btn btn-primary btn-sm gap-1.5 px-3 shadow-md">
                 <LogInIcon className="size-4 drop-shadow-sm" aria-hidden />
                 Sign in
               </button>
             </SignInButton>
-          </Show>
+          </SignedOut>
 
-          <Show when={"signed-in"}>
+          <SignedIn>
             <div className="flex items-center gap-2 border-l border-base-300 pl-3">
               <UserButton
                 appearance={{ elements: { avatarBox: "h-10 w-10 ring-2 ring-base-300" } }}
@@ -95,7 +95,7 @@ const Navbar = () => {
                 </span>
               ) : null}
             </div>
-          </Show>
+          </SignedIn>
         </nav>
       </div>
     </header>

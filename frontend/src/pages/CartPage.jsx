@@ -13,7 +13,7 @@ import { PageError } from "../components/PageError";
 import { IK_PRESETS, imageKitOptimizedUrl } from "../lib/imagekitUrl";
 import { Link } from "react-router";
 import { formatPrice } from "../utils/format";
-import { Show, SignInButton } from "@clerk/react";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 
 function CartPage() {
   const {
@@ -132,7 +132,7 @@ function CartPage() {
               </span>
             </div>
 
-            <Show when="signed-in">
+            <SignedIn>
               <button
                 type="button"
                 onClick={checkout}
@@ -147,16 +147,16 @@ function CartPage() {
                 )}
                 {checkoutLoading ? "Opening checkout…" : "Checkout securely"}
               </button>
-            </Show>
+            </SignedIn>
 
-            <Show when="signed-out">
+            <SignedOut>
               <SignInButton mode="modal">
                 <button type="button" className="btn btn-outline btn-primary mt-6 w-full gap-2">
                   <LogInIcon className="size-4" aria-hidden />
                   Sign in to checkout
                 </button>
               </SignInButton>
-            </Show>
+            </SignedOut>
 
             <p className="mt-4 flex items-start gap-2 text-xs text-base-content/60">
               <HeadphonesIcon className="mt-0.5 size-3.5 shrink-0 text-primary" aria-hidden />

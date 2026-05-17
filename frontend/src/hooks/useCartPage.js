@@ -1,4 +1,4 @@
-import { useAuth } from "@clerk/react";
+import { useAuth } from "@clerk/clerk-react";
 
 import { useCart } from "../store/cart";
 import { useQuery } from "@tanstack/react-query";
