@@ -58,7 +58,7 @@ const staticDir = fs.existsSync(publicDir) ? publicDir : legacyPublicDir;
 if (fs.existsSync(staticDir)) {
   app.use(express.static(staticDir));
 
-  app.get("/*", (req, res, next) => {
+  app.use((req, res, next) => {
     if (req.method !== "GET" && req.method !== "HEAD") {
       next();
       return;
