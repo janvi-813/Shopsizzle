@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useOutletContext, useParams } from "react-router";
+import { useOutletContext, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { StreamChat } from "stream-chat";
 import { apiFetch } from "../lib/api.js";
@@ -61,3 +61,4 @@ export function useOrderChatPage() {
 
   return { paid, client, error, channel, canInvite, inviteMutation };
 }
+

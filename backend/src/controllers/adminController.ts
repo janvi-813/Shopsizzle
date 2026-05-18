@@ -18,7 +18,7 @@ const productCreate = z.object({
   category: z.string().min(1).default("General"),
   description: z.string().default(""),
   priceCents: z.number().int().positive(),
-  currency: z.string().min(1).default("usd"),
+  currency: z.string().min(1).default("inr"),
   imageUrl: z
     .union([z.string().url(), z.literal("")])
     .optional()

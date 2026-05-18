@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export function PageError({ message, action }) {
   return (
@@ -12,3 +12,4 @@ export function PageError({ message, action }) {
     </div>
   );
 }
+

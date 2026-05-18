@@ -1,5 +1,5 @@
 import { ArrowRightIcon, PackageIcon, ShoppingCartIcon } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function EmptyCart() {
   return (
@@ -29,3 +29,4 @@ export default function EmptyCart() {
     </div>
   );
 }
+

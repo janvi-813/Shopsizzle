@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { ProductPageSkeleton } from "../components/LoadingSkeletons";
 import { PageError } from "../components/PageError";
 import { useProductPage } from "../hooks/useProductPage";
@@ -121,3 +121,4 @@ function ProductDetailPage() {
 }
 
 export default ProductDetailPage;
+

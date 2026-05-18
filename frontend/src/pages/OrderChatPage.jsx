@@ -7,11 +7,11 @@ import {
   Channel,
   ChannelHeader,
   MessageList,
-  MessageInput,
+  MessageComposer,
   Thread,
   Window,
 } from "stream-chat-react";
-import "stream-chat-react/dist/css/v2/index.css";
+import "stream-chat-react/dist/css/index.css";
 
 function OrderChatPage() {
   const { paid, client, error, channel, canInvite, inviteMutation } = useOrderChatPage();
@@ -78,7 +78,7 @@ function OrderChatPage() {
             <Window>
               <ChannelHeader />
               <MessageList />
-              <MessageInput focus />
+              <MessageComposer />
             </Window>
             <Thread />
           </Channel>

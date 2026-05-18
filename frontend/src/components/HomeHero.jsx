@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { ArrowRightIcon, SparklesIcon } from "lucide-react";
 
 export function HomeHero({ categories, loadingCategories }) {
@@ -58,3 +58,4 @@ export function HomeHero({ categories, loadingCategories }) {
     </section>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "../lib/api.js";
 
@@ -18,3 +18,4 @@ export function useProductPage() {
     error,
   };
 }
+

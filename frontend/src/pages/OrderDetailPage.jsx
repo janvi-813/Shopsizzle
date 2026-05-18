@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { OrderDetailSkeleton } from "../components/LoadingSkeletons";
 import { PageError } from "../components/PageError";
 import { useOrderDetailPage } from "../hooks/useOrderDetailPage";
@@ -72,7 +72,7 @@ function OrderDetailPage() {
                   Order total
                 </p>
                 <p className="text-2xl font-bold tabular-nums text-base-content sm:text-3xl">
-                  {formatPrice(order.totalCents, "usd")}
+                  {formatPrice(order.totalCents, "inr")}
                 </p>
               </div>
             </div>
@@ -133,3 +133,4 @@ function OrderDetailPage() {
   );
 }
 export default OrderDetailPage;
+

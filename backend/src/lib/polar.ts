@@ -14,6 +14,7 @@ type CheckoutCreateBody = {
   return_url?: string;
   external_customer_id?: string;
   customer_email?: string;
+  presentment_currency?: string;
   metadata?: Record<string, string | number | boolean>;
 };
 

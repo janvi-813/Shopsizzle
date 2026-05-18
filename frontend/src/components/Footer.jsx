@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { HeadphonesIcon, TruckIcon } from "lucide-react";
 
 export default function Footer() {
@@ -72,3 +72,4 @@ export default function Footer() {
     </footer>
   );
 }
+

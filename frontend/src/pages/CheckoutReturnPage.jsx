@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router-dom";
 import { useCart } from "../store/cart";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
@@ -47,3 +47,4 @@ function CheckoutReturnPage() {
 }
 
 export default CheckoutReturnPage;
+

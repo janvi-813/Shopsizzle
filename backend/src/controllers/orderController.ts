@@ -236,7 +236,7 @@ export async function createVideoInvite(req: Request, res: Response, next: NextF
     await channel.create();
     await channel.addMembers([customerSid, staffStreamUserId]);
 
-    const joinUrl = `${env.FRONTEND_URL.replace(/\/+$/, "")}/orders/${order.id}/call`;
+    const joinUrl = `${env.FRONTEND_URL.replace(/\/+$|\/+$/, "")}/orders/${order.id}/video`;
 
     await channel.sendMessage({
       text: `Video call — tap Join below (same link for everyone): ${joinUrl}`,

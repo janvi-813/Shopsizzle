@@ -8,7 +8,7 @@ export function AdminProductForm({ initial, saving, error, getToken, onCancel, o
   const [category, setCategory] = useState(initial?.category ?? "General");
   const [description, setDescription] = useState(initial?.description ?? "");
   const [priceCents, setPriceCents] = useState(initial ? String(initial.priceCents / 100) : "");
-  const [currency, setCurrency] = useState(initial?.currency ?? "usd");
+  const [currency, setCurrency] = useState(initial?.currency ?? "inr");
   const [imageUrl, setImageUrl] = useState(initial?.imageUrl ?? "");
   const [imageKitFileId, setImageKitFileId] = useState(initial?.imageKitFileId ?? "");
   const [active, setActive] = useState(initial?.active ?? true);
@@ -130,7 +130,7 @@ export function AdminProductForm({ initial, saving, error, getToken, onCancel, o
 
       <div className="grid grid-cols-2 gap-2">
         <label className="form-control">
-          <span className="label-text">Price (USD)</span>
+          <span className="label-text">Price (INR)</span>
           <input
             className="input input-bordered"
             type="number"

@@ -2,7 +2,7 @@ import { ChevronRightIcon, PackageIcon } from "lucide-react";
 import { OrdersListSkeleton } from "../components/LoadingSkeletons";
 import { PageError } from "../components/PageError";
 import useOrdersPage from "../hooks/useOrdersPage";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { OrderPreview } from "../components/OrderPreview";
 import { formatOrderWhen, formatPrice } from "../utils/format";
 
@@ -99,7 +99,7 @@ function OrdersPage() {
                           Total
                         </p>
                         <p className="text-lg font-bold tabular-nums text-base-content sm:text-xl">
-                          {formatPrice(o.totalCents, "usd")}
+                          {formatPrice(o.totalCents, "inr")}
                         </p>
                       </div>
                       <ChevronRightIcon
@@ -118,3 +118,4 @@ function OrdersPage() {
   );
 }
 export default OrdersPage;
+

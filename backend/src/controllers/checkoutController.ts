@@ -61,6 +61,24 @@ export async function createCheckout(req: Request, res: Response, next: NextFunc
       return;
     }
 
+    const normalizeCurrency = (value: string) => {
+      const lower = value.trim().toLowerCase();
+      if (lower === "rupee" || lower === "rs" || lower === "₹") return "inr";
+      return lower;
+    };
+
+    const currency = normalizeCurrency(prodRows[0].currency);
+    if (!prodRows.every((p) => normalizeCurrency(p.currency) === currency)) {
+      res.status(400).json({ error: "Mixed currencies are not supported in one checkout." });
+      return;
+    }
+
+    const overrideCurrency = env.POLAR_PRESENTMENT_CURRENCY
+      ? normalizeCurrency(env.POLAR_PRESENTMENT_CURRENCY)
+      : undefined;
+    const checkoutCurrency = overrideCurrency ?? "inr";
+    const presentmentCurrency = overrideCurrency ?? "inr";
+
     const byId = new Map(prodRows.map((p) => [p.id, p]));
     let totalCents = 0;
     const lines: CheckoutSessionLine[] = [];
@@ -75,9 +93,20 @@ export async function createCheckout(req: Request, res: Response, next: NextFunc
       });
     }
 
-    if (totalCents < 10) {
+    const lookupPolarMinimum = (currency: string) => {
+      switch (currency.toLowerCase()) {
+        case "inr":
+          return 6000;
+        default:
+          return 100;
+      }
+    };
+
+    const minimumPolarAmount = lookupPolarMinimum(checkoutCurrency);
+    if (totalCents < minimumPolarAmount) {
+      const formattedMin = checkoutCurrency === "inr" ? "₹60.00" : `${minimumPolarAmount / 100} ${checkoutCurrency.toUpperCase()}`;
       res.status(400).json({
-        error: "Total below Polar minimum (e.g. USD requires at least 10 cents)",
+        error: `Total below Polar minimum (${formattedMin}). Please increase the cart total to continue.`,
       });
       return;
     }
@@ -88,7 +117,7 @@ export async function createCheckout(req: Request, res: Response, next: NextFunc
         userId: localUser.id,
         lines,
         totalCents,
-        currency: "usd",
+        currency: "inr",
       })
       .returning();
 
@@ -101,11 +130,12 @@ export async function createCheckout(req: Request, res: Response, next: NextFunc
         [env.POLAR_CHECKOUT_PRODUCT_ID]: [
           {
             amount_type: "fixed",
-            price_currency: "usd",
+            price_currency: checkoutCurrency,
             price_amount: totalCents,
           },
         ],
       },
+      presentment_currency: presentmentCurrency,
 
       success_url: successUrl,
       return_url: returnUrl,
@@ -120,6 +150,8 @@ export async function createCheckout(req: Request, res: Response, next: NextFunc
 
     res.json({ checkoutUrl: checkout.url });
   } catch (e) {
-    next(e);
+    const message = e instanceof Error ? e.message : "Internal server error";
+    console.error("Checkout error", e);
+    res.status(500).json({ error: message });
   }
 }

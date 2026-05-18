@@ -1,7 +1,7 @@
 import { useAuth } from "@clerk/clerk-react";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { apiFetch } from "../lib/api";
 import { StreamVideoClient } from "@stream-io/video-react-sdk";
 
@@ -71,3 +71,4 @@ function useOrderVideoPage() {
 }
 
 export default useOrderVideoPage;
+

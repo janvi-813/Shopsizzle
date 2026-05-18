@@ -51,23 +51,26 @@ app.use("/api/checkout", chekoutRouter);
 app.use("/api/admin", adminRouter);
 app.use("/api/orders", orderRouter);
 
- const publicDir = path.join(process.cwd(), "public");
-if (fs.existsSync(publicDir)) {
-  app.use(express.static(publicDir));
+const publicDir = path.join(process.cwd(), "frontend", "dist");
+const legacyPublicDir = path.join(process.cwd(), "public");
+const staticDir = fs.existsSync(publicDir) ? publicDir : legacyPublicDir;
 
- app.get("/{*any}", (req, res, next) => {
-  if (req.method !== "GET" && req.method !== "HEAD") {
-     next();
-     return;
-   }
+if (fs.existsSync(staticDir)) {
+  app.use(express.static(staticDir));
 
-  if (req.path.startsWith("/api") || req.path.startsWith("/webhooks")) {
-     next();
-    return;
-  }
+  app.get("*", (req, res, next) => {
+    if (req.method !== "GET" && req.method !== "HEAD") {
+      next();
+      return;
+    }
 
-   res.sendFile(path.join(publicDir, "index.html"), (err) => next(err));
- });
+    if (req.path.startsWith("/api") || req.path.startsWith("/webhooks")) {
+      next();
+      return;
+    }
+
+    res.sendFile(path.join(staticDir, "index.html"), (err) => next(err));
+  });
 }
 
 // // sentry will be attached to the response object

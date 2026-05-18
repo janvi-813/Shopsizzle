@@ -11,7 +11,7 @@ import EmptyCart from "../components/EmptyCart";
 import { CartSkeleton } from "../components/LoadingSkeletons";
 import { PageError } from "../components/PageError";
 import { IK_PRESETS, imageKitOptimizedUrl } from "../lib/imagekitUrl";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { formatPrice } from "../utils/format";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 
@@ -19,6 +19,7 @@ function CartPage() {
   const {
     checkout,
     checkoutLoading,
+    checkoutError,
     items,
     lines,
     productsError,
@@ -147,6 +148,9 @@ function CartPage() {
                 )}
                 {checkoutLoading ? "Opening checkout…" : "Checkout securely"}
               </button>
+              {checkoutError ? (
+                <p className="mt-3 text-sm text-error">{checkoutError}</p>
+              ) : null}
             </SignedIn>
 
             <SignedOut>
@@ -173,3 +177,4 @@ function CartPage() {
   );
 }
 export default CartPage;
+

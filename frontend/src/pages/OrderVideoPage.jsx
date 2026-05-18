@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import useOrderVideoPage from "../hooks/useOrderVideoPage";
 import { OrderVideoSkeleton } from "../components/LoadingSkeletons";
 import { PageError } from "../components/PageError";
@@ -96,3 +96,4 @@ function OrderVideoPage() {
 }
 
 export default OrderVideoPage;
+

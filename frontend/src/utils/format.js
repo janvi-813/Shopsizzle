@@ -1,7 +1,7 @@
 export function formatPrice(cents, currency) {
   return new Intl.NumberFormat(undefined, {
     style: "currency",
-    currency: (currency ?? "usd").toUpperCase(),
+    currency: (currency ?? "inr").toUpperCase(),
   }).format(cents / 100);
 }
 
