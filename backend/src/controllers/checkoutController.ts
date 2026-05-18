@@ -1,4 +1,4 @@
-import type { Request, Response, NextFunction } from "express";
+import type { Request, Response } from "express";
 import { getEnv } from "../lib/env";
 import z from "zod";
 import { getAuth } from "@clerk/express";
@@ -21,7 +21,7 @@ const cartSchema = z.object({
     .min(1),
 });
 
-export async function createCheckout(req: Request, res: Response, next: NextFunction) {
+export async function createCheckout(req: Request, res: Response) {
   try {
     // only signed-in users can start checkout
     const { userId, isAuthenticated } = getAuth(req);
