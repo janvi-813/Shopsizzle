@@ -78,7 +78,7 @@ function OrderSummaryPage() {
       <div className="flex items-center justify-between gap-4 border-t border-base-300 bg-base-200/50 px-5 py-5 sm:px-6">
         <span className="text-lg font-semibold text-base-content">Total</span>
         <span className="text-2xl font-bold tabular-nums text-primary">
-          {formatPrice(order.totalCents, "usd")}
+          {formatPrice(order.totalCents, "inr")}
         </span>
       </div>
     </div>

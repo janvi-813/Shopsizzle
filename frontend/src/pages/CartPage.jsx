@@ -129,7 +129,7 @@ function CartPage() {
             <div className="flex justify-between text-sm">
               <span className="text-base-content/70">Subtotal</span>
               <span className="font-semibold text-base-content">
-                {formatPrice(subtotal, lines[0]?.product?.currency ?? "usd")}
+                {formatPrice(subtotal, lines[0]?.product?.currency ?? "inr")}
               </span>
             </div>
 
